@@ -4,155 +4,129 @@
 <meta charset="UTF-8">
 <title>Magical Hug Day</title>
 <style>
-body{
-    margin:0;
-    overflow:hidden;
-    font-family:'Segoe UI',sans-serif;
+/* Basic Reset */
+body, html {
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+    font-family: 'Segoe UI', sans-serif;
     background: radial-gradient(circle at bottom,#0f2027,#203a43,#2c5364);
-    color:white;
-    text-align:center;
-    height:100vh;
-    position:relative;
+    color: white;
+    text-align: center;
 }
 
 /* 🌟 Stars */
-.star{
-    position:absolute;
-    width:2px;
-    height:2px;
-    background:white;
-    animation:twinkle 2s infinite alternate;
-    z-index:0;
+.star {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: white;
+    animation: twinkle 2s infinite alternate;
 }
-@keyframes twinkle{
-    from{opacity:0.2;}
-    to{opacity:1;}
-}
-
-/* 💗 Floating Hearts in background */
-.bg-heart{
-    position:absolute;
-    width:12px;
-    height:12px;
-    background:red;
-    clip-path: polygon(50% 0%, 61% 8%, 68% 21%, 68% 35%, 50% 60%, 32% 35%, 32% 21%, 39% 8%);
-    animation:floatUp linear forwards;
-    opacity:0.7;
-    pointer-events:none;
-    z-index:0;
-}
-@keyframes floatUp{
-    0% {transform: translateY(0) scale(1);}
-    100% {transform: translateY(-350px) scale(0.5); opacity:0;}
+@keyframes twinkle {
+    from {opacity: 0.2;}
+    to {opacity: 1;}
 }
 
 /* Main container */
-.container{
-    padding-top:60px;
-    position:relative;
-    z-index:2;
+.container {
+    padding-top: 60px;
+    animation: fadeIn 3s ease;
+    position: relative;
+    z-index: 2;
+}
+@keyframes fadeIn {
+    from {opacity:0; transform:translateY(40px);}
+    to {opacity:1; transform:translateY(0);}
 }
 
-/* Title */
-h1{
-    font-size:50px;
-    text-shadow:0 0 20px pink;
+h1 {
+    font-size: 8vw; /* scales on mobile */
+    text-shadow: 0 0 20px pink;
+    margin-bottom: 20px;
 }
 
-/* 🎥 Video styling (square) */
-.video-box{
-    margin:20px auto;
-    display:none;
-    opacity:0;
-    transition: opacity 1.5s ease;
-    position:relative;
-    z-index:1;
-    width:300px;
-    height:300px;      /* square */
-    border-radius:20px;
-    overflow:hidden;   /* crop overflowing parts */
+/* 🎥 Video box */
+.video-box {
+    margin: 0 auto 20px auto;
+    display: none; /* hidden initially */
+    width: 90vw;  /* responsive width */
+    max-width: 400px; /* max for large screens */
+    aspect-ratio: 1 / 1; /* square container */
+    overflow: hidden;
+    border-radius: 20px;
     box-shadow: 0 0 30px pink;
 }
-.video-box.show{
-    opacity:1;
-}
-.video-box video{
-    width:100%;
-    height:100%;
-    object-fit:cover;   /* fill square nicely */
+.video-box video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
 }
 
 /* 💌 Letter box */
-.letter-box{
-    width:80%;
-    max-width:600px;
-    margin:40px auto;
-    padding:20px;
-    background:rgba(255,255,255,0.1);
-    border-radius:15px;
-    backdrop-filter:blur(10px);
-    font-size:20px;
-    min-height:120px;
-    box-shadow:0 0 20px rgba(255,255,255,0.2);
-    white-space:pre-line;
-    z-index:2;
-    position:relative;
+.letter-box {
+    width: 90%;
+    max-width: 600px;
+    margin: 20px auto;
+    padding: 15px;
+    background: rgba(255,255,255,0.1);
+    border-radius: 15px;
+    backdrop-filter: blur(10px);
+    font-size: 4vw; /* responsive text */
+    min-height: 120px;
+    box-shadow: 0 0 20px rgba(255,255,255,0.2);
+    white-space: pre-line;
 }
 
 /* 💖 Button */
-button{
-    padding:12px 25px;
-    font-size:18px;
-    border:none;
-    border-radius:30px;
-    background:#ff4d6d;
-    color:white;
-    cursor:pointer;
-    margin-top:20px;
-    transition:0.3s;
-    z-index:2;
-    position:relative;
+button {
+    padding: 10px 20px;
+    font-size: 4vw; /* responsive */
+    border: none;
+    border-radius: 30px;
+    background: #ff4d6d;
+    color: white;
+    cursor: pointer;
+    margin-top: 20px;
+    transition: 0.3s;
 }
-button:hover{
-    transform:scale(1.1);
+button:hover {
+    transform: scale(1.1);
 }
 
-/* 🎆 Fireworks */
-.firework{
-    position:absolute;
-    width:6px;
-    height:6px;
-    border-radius:50%;
-    pointer-events:none;
-    animation:explode 800ms forwards;
-    z-index:3;
+/* 🌟 Hearts floating */
+.heart {
+    position: absolute;
+    font-size: 24px;
+    animation: floatUp 4s linear infinite;
 }
-@keyframes explode{
-    0% {transform: translate(0,0) scale(1); opacity:1;}
-    100% {transform: translate(var(--x), var(--y)) scale(0); opacity:0;}
+@keyframes floatUp {
+    0% {transform: translateY(0);}
+    100% {transform: translateY(-120vh);}
 }
 
-/* 💗 Floating hearts on click */
-.heart{
-    position:absolute;
-    width:15px;
-    height:15px;
-    background:red;
-    clip-path: polygon(50% 0%, 61% 8%, 68% 21%, 68% 35%, 50% 60%, 32% 35%, 32% 21%, 39% 8%);
-    animation:floatUpClick linear forwards;
-    opacity:0.8;
-    pointer-events:none;
-    z-index:3;
+/* Fireworks */
+.firework {
+    position: absolute;
+    width: 10px;
+    height: 10px;
+    background: #ff4d6d;
+    border-radius: 50%;
+    pointer-events: none;
+    opacity: 0.8;
 }
-@keyframes floatUpClick{
-    0% {transform: translateY(0) scale(1);}
-    100% {transform: translateY(-300px) scale(0.5); opacity:0;}
+
+/* Responsive Adjustments */
+@media (max-width: 600px) {
+    h1 {font-size: 10vw;}
+    .letter-box {font-size: 4vw;}
+    button {font-size: 5vw; padding: 12px 18px;}
 }
 </style>
 </head>
 <body>
 
-<!-- 🎵 Background Music -->
+<!-- Background Music -->
 <audio id="bgMusic" loop preload="auto">
     <source src="music.mp3" type="audio/mpeg">
 </audio>
@@ -168,15 +142,15 @@ button:hover{
         </video>
     </div>
 
-    <!-- 💖 Button -->
-    <button id="startBtn" onclick="startMagic(event)">Open My Heart 💌</button>
+    <!-- 💖 Button to start magic -->
+    <button onclick="startMagic()">Open My Heart 💌</button>
 
     <!-- 💌 Letter -->
     <div class="letter-box" id="letter"></div>
 </div>
 
 <script>
-/* 🌟 Generate background stars */
+/* 🌙 Stars */
 for(let i=0;i<120;i++){
     let star=document.createElement("div");
     star.className="star";
@@ -186,24 +160,40 @@ for(let i=0;i<120;i++){
     document.body.appendChild(star);
 }
 
-/* 💗 Generate background hearts continuously */
-function spawnBackgroundHearts(){
-    setInterval(()=>{
-        let heart = document.createElement("div");
-        heart.className = "bg-heart";
-        heart.style.left = Math.random()*95 + "vw";
-        heart.style.bottom = "-20px";
-        heart.style.animationDuration = (4 + Math.random()*4) + "s";
-        document.body.appendChild(heart);
-        setTimeout(()=> heart.remove(), 8000);
-    }, 500);
+/* 💌 Hearts animation */
+function createHeart() {
+    let heart = document.createElement("div");
+    heart.className = "heart";
+    heart.style.left = Math.random()*100+"vw";
+    heart.innerHTML = "❤️";
+    heart.style.fontSize = (Math.random()*20+15) + "px";
+    document.body.appendChild(heart);
+    setTimeout(() => heart.remove(), 4000);
 }
-spawnBackgroundHearts();
 
-/* 💌 Letter Message */
+/* 💌 Fireworks animation */
+function createFirework(x,y){
+    for(let i=0;i<12;i++){
+        let f = document.createElement("div");
+        f.className="firework";
+        f.style.left = x+"px";
+        f.style.top = y+"px";
+        document.body.appendChild(f);
+        let angle = (i*30) * Math.PI/180;
+        let distance = 60 + Math.random()*40;
+        let dx = distance * Math.cos(angle);
+        let dy = distance * Math.sin(angle);
+        f.animate([
+            {transform:`translate(0,0)`, opacity:1},
+            {transform:`translate(${dx}px,${dy}px)`, opacity:0}
+        ],{duration:800, easing:"ease-out"});
+        setTimeout(()=>f.remove(),800);
+    }
+}
+
+/* 💌 Letter message */
 const message = `
 My Love 💖,
-
 On this beautiful Hug Day,
 I just want you to feel how special you are to me.
 If I could, I would pause time,
@@ -215,84 +205,50 @@ Forever Yours ❤️ I Love You Bubu ❤️
 `;
 
 let i = 0;
-let magicStarted = false;
 
-/* 💖 Start Everything */
-function startMagic(e){
-    if(magicStarted) return; 
-    magicStarted = true;
-
-    // 🌟 Play music
+/* 💖 Start everything */
+function startMagic(){
+    // Play music
     const music = document.getElementById("bgMusic");
-    music.play().catch(err => {
-        console.log("Music blocked:", err);
-        alert("Click the button again to allow music!");
-    });
+    music.play().catch(err => console.log("Music blocked:", err));
 
+    // Start typing letter
     startLetter();
 
-    // 🎥 Show video
+    // Show video
     const videoBox = document.getElementById("videoBox");
-    videoBox.style.display = "block";
-    setTimeout(()=> videoBox.classList.add("show"), 50);
-
+    videoBox.style.display="block";
     const video = document.getElementById("hugVideo");
-    video.muted = true;
-    video.loop = true;
-    video.play().catch(err => console.log("Video play blocked:", err));
+    video.play().catch(err=>console.log("Video play blocked:", err));
 
-    // 🎆 Fireworks at click position
-    triggerFireworks(e.clientX, e.clientY);
-    
-    // 💗 Floating hearts on click
-    startClickHearts();
+    // Create hearts & fireworks repeatedly
+    let heartInterval = setInterval(createHeart, 400);
+    let fireworkInterval = setInterval(()=>{
+        let x = Math.random()*window.innerWidth;
+        let y = Math.random()*window.innerHeight/2 + window.innerHeight/4;
+        createFirework(x,y);
+    }, 800);
+
+    // Stop after 12 seconds
+    setTimeout(()=>{
+        clearInterval(heartInterval);
+        clearInterval(fireworkInterval);
+    }, 12000);
 }
 
-/* 💌 Typing Effect */
+/* 💌 Typing effect */
 function startLetter(){
     const letterBox = document.getElementById("letter");
     letterBox.innerHTML = "";
     i = 0;
     typeWriter();
 }
-
 function typeWriter(){
     if(i < message.length){
         document.getElementById("letter").innerHTML += message.charAt(i);
         i++;
         setTimeout(typeWriter, 40);
     }
-}
-
-/* 🎆 Fireworks Function */
-function triggerFireworks(x, y){
-    const colors = ["#ff4d6d","#ffd700","#ff69b4","#00ffff","#ffffff"];
-    for(let i=0; i<50; i++){  // more particles
-        let particle = document.createElement("div");
-        particle.className = "firework";
-        particle.style.left = x + "px";
-        particle.style.top = y + "px";
-        let dx = (Math.random()-0.5) * 350 + "px";
-        let dy = (Math.random()-0.5) * 350 + "px";
-        particle.style.setProperty('--x', dx);
-        particle.style.setProperty('--y', dy);
-        particle.style.background = colors[Math.floor(Math.random()*colors.length)];
-        document.body.appendChild(particle);
-        setTimeout(()=> particle.remove(), 800);
-    }
-}
-
-/* 💗 Floating hearts on click */
-function startClickHearts(){
-    setInterval(()=>{
-        let heart = document.createElement("div");
-        heart.className = "heart";
-        heart.style.left = (20 + Math.random()*60) + "vw";
-        heart.style.bottom = "-20px";
-        heart.style.animationDuration = (3 + Math.random()*2) + "s";
-        document.body.appendChild(heart);
-        setTimeout(()=> heart.remove(), 6000);
-    }, 400);
 }
 </script>
 
