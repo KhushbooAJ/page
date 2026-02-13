@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Happy Kiss Day Bubu 💋</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 15px;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: linear-gradient(135deg, #ff758c, #ff7eb3);
+    font-family: 'Comic Sans MS', cursive, sans-serif;
+    overflow-x: hidden;
+}
+
+.card {
+    width: 100%;
+    max-width: 400px;
+    text-align: center;
+    background: rgba(255, 255, 255, 0.2);
+    padding: 25px 20px;
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+    color: white;
+    animation: fadeIn 1.5s ease-in-out;
+}
+
+h1 {
+    font-size: 1.8rem;
+    margin-bottom: 10px;
+}
+
+p {
+    font-size: 1rem;
+    margin-bottom: 15px;
+}
+
+button {
+    padding: 10px 20px;
+    font-size: 1rem;
+    border: none;
+    border-radius: 25px;
+    background: white;
+    color: #ff4e7a;
+    cursor: pointer;
+    font-weight: bold;
+    transition: 0.3s;
+}
+
+button:hover {
+    transform: scale(1.05);
+    background: #ffe6ec;
+}
+
+/* Centered GIF */
+.gif-container {
+    display: none;
+    margin-top: 15px;
+}
+
+.gif-container img {
+    width: 100%;
+    max-width: 260px;
+    height: auto;
+    border-radius: 15px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.4);
+}
+
+/* Floating hearts */
+.heart {
+    position: fixed;
+    color: #fff;
+    animation: float 5s linear infinite;
+    pointer-events: none;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes float {
+    0% { transform: translateY(100vh); opacity: 1; }
+    100% { transform: translateY(-10vh); opacity: 0; }
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+    <h1>Happy Kiss Day 💋</h1>
+    <p>Lots of kisses to Mahh Bubu 💕</p>
+
+    <button id="kissBtn" onclick="showGif()">Click here💋</button>
+
+    <div class="gif-container" id="gifBox">
+        <img src="https://media.giphy.com/media/MDJ9IbxxvDUQM/giphy.gif"
+             alt="Girl Kiss Bubu Dudu GIF">
+    </div>
+
+    <p>Sending you love, hugs & lots of kisses 💖</p>
+</div>
+
+<script>
+function showGif() {
+    document.getElementById("kissBtn").style.display = "none";
+    document.getElementById("gifBox").style.display = "block";
+
+    for (let i = 0; i < 12; i++) {
+        createHeart();
+    }
+}
+
+function createHeart() {
+    const heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerHTML = "💖";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.fontSize = (Math.random() * 20 + 12) + "px";
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+        heart.remove();
+    }, 5000);
+}
+</script>
+
+</body>
+</html>
